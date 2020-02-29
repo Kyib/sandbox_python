@@ -1,6 +1,7 @@
 #! python3
 # phoneAndEmail.py - クリップボードから電話番号とメアドを検索する
 
+import sys
 import re
 import pyperclip
 
@@ -37,10 +38,10 @@ for groups in phone_regex.findall(text):
 for groups in email_regex.findall(text):
     matches.append(groups[0])
 
-# TODO 検索結果をクリップボードに貼り付ける
+# 検索結果をクリップボードに貼り付ける
 if len(matches) <= 0:
     print('電話番号やメールアドレスは見つかりませんでした')
-    exit
+    sys.exit(0)
 
 pyperclip.copy('/n'.join(matches))
 print('クリップボードにコピーしました')
